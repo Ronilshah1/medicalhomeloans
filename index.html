@@ -1,0 +1,904 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Medical Home Loans Australia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap">
+<style>
+/* ==========================================================================
+   Medical Home Loans Australia — rebuilt from the Framer site
+   Tokens taken from the live site's computed styles.
+   Single (light) theme on purpose: this is a brand replica.
+   ========================================================================== */
+:root {
+  --navy: #0a066e;
+  --navy-hover: #15109a;
+  --lavender: #c7c5dc;
+  --tint: rgba(199, 197, 220, 0.24);
+  --gold: #cf9a39;
+  --ink: #141412;
+  --body: #383838;
+  --muted: #7a796e;
+  --footer-ink: #110e34;
+  --rule: #cccbb4;
+  --white: #ffffff;
+
+  --font: "Poppins", "Helvetica Neue", Arial, sans-serif;
+  --track: -0.03em;
+
+  --gutter: clamp(16px, 6.25vw, 80px);
+  --section-gap: clamp(72px, 10vw, 140px);
+  --header-h: 109px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--body);
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.3;
+  letter-spacing: var(--track);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+h1, h2, h3, h4, p, figure, ul { margin: 0; padding: 0; }
+ul { list-style: none; }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+strong, b { font-weight: 400; color: var(--ink); }
+:focus-visible { outline: 2px solid var(--navy); outline-offset: 3px; border-radius: 6px; }
+
+.wrap { max-width: calc(1120px + 2 * var(--gutter)); margin-inline: auto; padding-inline: var(--gutter); }
+section[id], div[id="contact"] { scroll-margin-top: calc(var(--header-h) + 12px); }
+
+/* ---- shared pieces ---- */
+.h2 { font-size: clamp(30px, 3.75vw, 48px); font-weight: 300; line-height: 1.2; color: var(--ink); text-wrap: balance; }
+.h2 b { font-weight: 500; }
+.pill {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 10px 16px; border-radius: 21px; background: var(--tint);
+  font-size: 10px; line-height: 1.3; color: var(--body); white-space: nowrap;
+}
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 20px 32px; border-radius: 16px; border: 0; cursor: pointer;
+  background: var(--navy); color: var(--white); text-decoration: none;
+  font: 400 14px/1.2 var(--font); letter-spacing: var(--track); white-space: nowrap;
+  transition: background-color .2s ease, transform .2s ease;
+}
+.btn:hover { background: var(--navy-hover); transform: translateY(-1px); }
+.section-head { display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
+.section-head .h2 { max-width: 660px; }
+.card {
+  background: var(--tint); border: 1px solid var(--lavender); border-radius: 24px;
+  padding: 32px 24px; display: flex; flex-direction: column; gap: 32px;
+}
+.card h3 { font-size: 24px; font-weight: 400; line-height: 1.3; color: var(--ink); }
+.card p { font-size: 14px; }
+.card-text { display: flex; flex-direction: column; gap: 22px; }
+.icon-tile { width: 56px; height: 56px; border-radius: 16px; background: var(--lavender); display: grid; place-items: center; flex: none; }
+.icon-tile img { width: 36px; height: 36px; }
+.gold-list { display: flex; flex-direction: column; gap: 12px; }
+.gold-list li { border-left: 2px solid var(--gold); padding-left: 12px; }
+
+/* ---- header ---- */
+.site-header {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
+  background: var(--white);
+}
+.nav { max-width: calc(1040px + 2 * var(--gutter)); margin-inline: auto; padding: 30px var(--gutter) 20px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.nav-logo img { width: 112px; height: auto; }
+.nav { position: relative; }
+.nav-links { display: flex; align-items: center; gap: clamp(16px, 2.2vw, 32px); font-size: 14px; font-weight: 400; color: var(--ink); }
+.nav-links a { text-decoration: none; }
+.nav-links a:not(.btn) { padding-block: 6px; border-bottom: 1px solid transparent; transition: border-color .2s ease; }
+.nav-links a:not(.btn):hover { border-color: var(--ink); }
+.nav-toggle { display: none; }
+
+/* ---- hero ---- */
+.hero { position: relative; overflow: hidden; isolation: isolate; }
+.hero::before, .hero::after {
+  content: ""; position: absolute; z-index: -1; border-radius: 50%; filter: blur(150px); pointer-events: none;
+}
+.hero::before { width: 572px; height: 572px; left: -249px; top: -124px; background: rgba(10, 6, 110, 0.2); }
+.hero::after { width: 450px; height: 450px; right: -300px; bottom: 120px; background: rgba(10, 6, 110, 0.3); }
+.hero-grid {
+  max-width: 1280px; margin-inline: auto;
+  padding: 20px 20px 60px clamp(16px, 9.4vw, 120px);
+  display: grid; grid-template-columns: minmax(0, 446px) minmax(0, 594px); justify-content: space-between; align-items: center; gap: clamp(32px, 7vw, 100px);
+}
+.hero-copy { display: flex; flex-direction: column; gap: 16px; }
+.rated { align-self: flex-start; color: var(--muted); font-size: 10px; }
+.rated .divider { width: 1px; height: 15px; background: var(--muted); opacity: .6; }
+.rated .stars { display: inline-flex; gap: 1px; }
+.rated .stars img { width: 11px; height: 11px; }
+.hero h1 { font-size: clamp(28px, 2.6vw, 32px); font-weight: 500; line-height: 1.2; color: var(--ink); text-wrap: balance; margin-top: 8px; }
+.hero-lede { margin-block: 24px 16px; }
+
+.hero-panel {
+  position: relative; border-radius: 32px; overflow: hidden;
+  padding: clamp(48px, 9vw, 120px) clamp(16px, 5.8vw, 74px);
+  display: flex; flex-direction: column; gap: 32px;
+  background: #24403d;
+}
+.hero-panel > img.bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+.hero-panel > * { position: relative; z-index: 1; }
+.hero-panel h2 { font-size: 24px; font-weight: 500; line-height: 1.2; color: var(--white); max-width: 260px; }
+.form-shell { background: var(--lavender); border-radius: 20px; padding-bottom: 6px; }
+.form-card { background: var(--white); border-radius: 18px 18px 14px 14px; padding: 32px clamp(16px, 4vw, 34px) 28px; box-shadow: 0 2px 6px rgba(10, 6, 110, .08); }
+.lead-form { display: flex; flex-direction: column; gap: 14px; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; letter-spacing: 0; }
+.lead-form label { display: block; font-size: 14px; font-weight: 500; color: #111827; margin-bottom: 8px; }
+.lead-form input, .lead-form select {
+  width: 100%; font: 400 14px/1.4 inherit; font-family: inherit; color: #111827; background: var(--white);
+  border: 1px solid #acacac; border-radius: 5px; padding: 10px 15px; appearance: none;
+}
+.lead-form input::placeholder { color: #8c8c8c; font-size: 12px; }
+.lead-form input:focus, .lead-form select:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px rgba(10, 6, 110, .15); }
+.lead-form .email-wrap { position: relative; }
+.lead-form .email-wrap svg { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); pointer-events: none; }
+.lead-form .email-wrap input { padding-left: 38px; }
+.lead-form .select-wrap { position: relative; }
+.lead-form .select-wrap::after { content: ""; position: absolute; right: 16px; top: 50%; margin-top: -2px; border: 5px solid transparent; border-top-color: #999; pointer-events: none; }
+.lead-form select { padding-block: 13px; padding-right: 40px; }
+.lead-form button { margin-top: 12px; width: 100%; border: 0; border-radius: 8px; padding: 15px; background: var(--navy); color: var(--white); font: 600 14px/1.4 inherit; font-family: inherit; cursor: pointer; transition: background-color .2s ease; }
+.lead-form button:hover { background: var(--navy-hover); }
+.lead-form .fineprint { margin-top: 18px; text-align: center; font-size: 12px; font-style: italic; color: #2c3345; }
+.lead-form .form-status { font-size: 13px; line-height: 1.4; padding: 10px 12px; border-radius: 8px; background: var(--tint); color: var(--footer-ink); }
+.ghl-embed { width: 100%; min-height: 724px; border: 0; border-radius: 3px; display: block; }
+
+/* ---- stats ---- */
+.stats { padding-block: clamp(56px, 8vw, 120px) 0; }
+.stats .wrap { display: flex; flex-direction: column; align-items: center; gap: clamp(40px, 5vw, 64px); }
+.stat-row { width: 100%; max-width: 1010px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; text-align: center; }
+.stat { display: flex; flex-direction: column; gap: 24px; align-items: center; }
+.stat dt { order: 2; font-size: 16px; max-width: 210px; }
+.stat dd { order: 1; margin: 0; font-size: clamp(34px, 3.4vw, 44px); font-weight: 500; line-height: 1.1; color: var(--ink); letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+
+/* ---- partners ---- */
+.partners { padding-top: var(--section-gap); }
+.partners .wrap { display: flex; flex-direction: column; gap: clamp(36px, 5vw, 60px); }
+.lender-grid { max-width: 1040px; width: 100%; margin-inline: auto; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px; }
+.lender-grid li { background: var(--tint); border-radius: 20px; padding: 30px; height: 110px; display: grid; place-items: center; }
+.lender-grid img { max-height: 50px; width: auto; max-width: 100%; object-fit: contain; }
+
+/* ---- solution ---- */
+.solution { padding-top: var(--section-gap); }
+.solution .wrap { display: flex; flex-direction: column; gap: clamp(36px, 5vw, 60px); }
+.split-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.split-head > div { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; max-width: 520px; }
+.card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+
+/* ---- process ---- */
+.process { padding-top: var(--section-gap); }
+.process .wrap { display: flex; flex-direction: column; gap: clamp(36px, 5vw, 60px); }
+.step { position: relative; padding-top: 48px; }
+.step h3 + .step-sub { font-size: 16px; color: var(--body); }
+.step .card-text { gap: 22px; }
+.step-arrow { position: absolute; top: 20px; right: -36px; width: 100px; height: 56px; z-index: 2; }
+.step:last-child .step-arrow { display: none; }
+
+/* ---- testimonials ---- */
+.testimonials { margin-top: var(--section-gap); padding-block: clamp(64px, 9vw, 120px); background: var(--tint); }
+.t-grid { display: grid; grid-template-columns: minmax(0, 545px) minmax(0, 1fr) minmax(0, 1fr); gap: 30px; align-items: start; }
+.t-col { display: flex; flex-direction: column; gap: 30px; }
+.t-intro { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; padding-bottom: 12px; }
+.g-rating { width: 100%; display: flex; align-items: center; gap: 16px; padding-bottom: 24px; border-bottom: 1px solid var(--rule); flex-wrap: wrap; }
+.g-rating > img { width: 159px; height: 52px; }
+.g-rating .stars { display: flex; gap: 8px; margin-bottom: 10px; }
+.g-rating .stars img { width: 20px; height: 20px; }
+.g-rating p { font-size: 16px; color: var(--muted); }
+.g-rating p span { color: var(--gold); padding-inline: 4px; }
+.t-intro .lede { max-width: 470px; }
+.review { background: var(--tint); border: 1px solid var(--lavender); border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 22px; }
+.review blockquote { margin: 0; font-size: 14px; }
+.review figcaption { display: flex; align-items: center; gap: 12px; }
+.avatar { width: 32px; height: 32px; border-radius: 10px; background: var(--lavender); display: grid; place-items: center; font-size: 13px; font-weight: 400; color: var(--ink); letter-spacing: 0; flex: none; }
+.review .name { display: block; font-size: 16px; font-weight: 400; color: var(--ink); }
+.review .src { display: block; font-size: 10px; color: var(--muted); }
+
+/* ---- founder ---- */
+.founder { padding-top: var(--section-gap); }
+.founder-grid { display: grid; grid-template-columns: minmax(0, 410px) minmax(0, 1fr); gap: 20px; align-items: stretch; }
+.founder-photo { border-radius: 24px; overflow: hidden; min-height: 420px; }
+.founder-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+.founder-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; padding-block: 0 8px; }
+.founder-copy .bio { display: flex; flex-direction: column; gap: 20px; }
+.founder-copy .gold-list { margin-block: 8px; gap: 16px; }
+
+/* ---- faq ---- */
+.faq { padding-top: var(--section-gap); }
+.faq-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 545px); gap: clamp(32px, 8vw, 140px); align-items: start; }
+.faq-head { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.faq-head p { color: var(--muted); max-width: 440px; margin-top: 12px; }
+.faq-list { display: flex; flex-direction: column; gap: 24px; }
+.faq-list details { border: 1px solid var(--lavender); border-radius: 24px; background: var(--white); }
+.faq-list summary { list-style: none; cursor: pointer; padding: 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: 20px; font-weight: 300; line-height: 1.4; color: var(--ink); border-radius: 24px; }
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary::after { content: "+"; font-size: 22px; font-weight: 300; line-height: 1; width: 24px; text-align: center; flex: none; }
+.faq-list details[open] summary::after { content: "\2212"; }
+.faq-list details[open] summary { padding-bottom: 12px; }
+.faq-list details p { padding: 0 24px 24px; font-size: 14px; line-height: 1.4; max-width: 62ch; }
+
+/* ---- footer ---- */
+.site-footer { padding-block: clamp(64px, 9vw, 120px) 48px; font-size: 14px; }
+.footer-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; flex-wrap: wrap; padding-bottom: 32px; border-bottom: 1px solid var(--rule); }
+.footer-brand { display: flex; flex-direction: column; gap: 24px; color: var(--footer-ink); }
+.footer-brand img { width: 208px; height: auto; }
+.footer-legal { max-width: 480px; display: flex; flex-direction: column; gap: 20px; color: var(--footer-ink); line-height: 1.5; }
+.footer-bottom { padding-top: 32px; display: flex; flex-direction: column; gap: 24px; text-align: center; color: var(--muted); }
+.footer-bottom a { color: var(--footer-ink); text-decoration: none; }
+.footer-bottom a:hover { text-decoration: underline; }
+.footer-bottom .gaw { color: rgba(122, 122, 110, 0.85); max-width: 1100px; margin-inline: auto; line-height: 1.4; }
+
+/* ---- privacy policy view ---- */
+.policy { padding-block: clamp(40px, 6vw, 80px) 0; }
+.policy-body { max-width: 760px; display: flex; flex-direction: column; gap: 18px; line-height: 1.55; }
+.policy-body h1 { font-size: clamp(30px, 3.75vw, 48px); font-weight: 300; line-height: 1.2; color: var(--ink); margin-bottom: 12px; }
+.policy-body h2 { font-size: 20px; font-weight: 400; color: var(--ink); margin-top: 18px; line-height: 1.3; }
+.policy-body a { color: var(--navy); }
+.back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 400; color: var(--navy); text-decoration: none; margin-bottom: 24px; }
+.back-link:hover { text-decoration: underline; }
+
+/* ---- v2 content sections (copy from "CLIENTS: Allied Health" doc) ---- */
+.pill.eyebrow { align-self: flex-start; font-size: 11px; font-weight: 400; color: var(--navy); letter-spacing: 0.02em; white-space: normal; }
+.stack { display: flex; flex-direction: column; gap: clamp(36px, 5vw, 60px); }
+.h2.narrow { max-width: 640px; }
+.solutions, .lmi, .broker, .strategies, .closing { padding-top: var(--section-gap); }
+.band { margin-top: var(--section-gap); padding-block: clamp(64px, 9vw, 120px); background: var(--tint); }
+.two-col { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(32px, 7vw, 100px); align-items: start; }
+.col-head { display: flex; flex-direction: column; gap: 32px; }
+.prose { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; line-height: 1.45; }
+.prose > p { max-width: 62ch; }
+.prose .btn { margin-top: 12px; }
+.prose .gold-list { gap: 16px; }
+.btn { white-space: normal; text-align: center; }
+.btn.arrow::after, .more::after { content: "\2192"; margin-left: 10px; transition: transform .2s ease; }
+.btn.arrow:hover::after, .more:hover::after { transform: translateX(3px); }
+.btn.light { background: var(--white); color: var(--navy); }
+.btn.light:hover { background: #ecebf6; }
+.more { margin-top: auto; align-self: flex-start; font-size: 14px; font-weight: 400; color: var(--navy); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+.saving { border-left: 2px solid var(--gold); padding-left: 20px; display: flex; flex-direction: column; gap: 10px; }
+.saving-figure { font-size: clamp(30px, 3.4vw, 44px); font-weight: 500; line-height: 1.1; color: var(--ink); letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+.saving-figure span { font-size: 0.5em; font-weight: 300; color: var(--muted); padding-inline: 4px; }
+.saving figcaption { font-size: 14px; color: var(--muted); max-width: 40ch; line-height: 1.4; }
+.profession-grid { width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.profession-grid li { background: var(--white); border: 1px solid var(--lavender); border-radius: 16px; padding: 16px 20px; font-size: 16px; font-weight: 400; color: var(--ink); line-height: 1.3; }
+.ask-row { width: 100%; margin-top: 12px; padding-top: 28px; border-top: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.ask-row p { max-width: 30ch; color: var(--ink); font-weight: 400; }
+.ask-row .btn { margin-top: 0; }
+.closing-panel { background: var(--navy); border-radius: 32px; padding: clamp(40px, 7vw, 88px) clamp(24px, 6vw, 80px); display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+.closing-panel .h2 { color: var(--white); max-width: 560px; }
+@media (max-width: 900px) {
+  .two-col { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 480px) {
+  .profession-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---- embeds (borrowing calculator, booking calendar) ---- */
+.section-lede { max-width: 58ch; color: var(--body); }
+.embed-frame { position: relative; width: 100%; background: var(--tint); border: 1px solid var(--lavender); border-radius: 24px; overflow: hidden; }
+.embed-frame.light { background: var(--white); }
+.embed { display: block; width: 100%; border: 0; }
+.embed-calc { height: 1000px; }
+.embed-cal { height: 880px; }
+.embed-fallback { padding: clamp(28px, 5vw, 56px); display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.embed-fallback h3 { font-size: 24px; font-weight: 400; color: var(--ink); }
+.embed-fallback p { max-width: 46ch; }
+.embed-fallback .btn { margin-top: 8px; }
+.embed-note { font-size: 13px; color: var(--muted); line-height: 1.5; max-width: 80ch; }
+.btn.ghost { background: transparent; color: var(--white); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .55); }
+.btn.ghost:hover { background: rgba(255, 255, 255, .12); }
+.closing-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+@media (max-width: 640px) {
+  .embed-calc { height: 1180px; }
+  .embed-cal { height: 1000px; }
+  .closing-actions { width: 100%; flex-direction: column; align-items: stretch; }
+}
+
+/* ---- responsive ---- */
+@media (max-width: 1100px) {
+  .step-arrow { display: none; }
+  .t-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .t-grid .t-col:first-child { grid-column: 1 / -1; }
+  .t-col.wide { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .t-col.wide .t-intro { grid-column: 1 / -1; }
+}
+@media (max-width: 900px) {
+  :root { --header-h: 84px; }
+  .nav { padding-block: 16px; }
+  .nav-toggle { display: inline-grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--lavender); border-radius: 12px; background: var(--white); cursor: pointer; }
+  .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after { display: block; width: 18px; height: 1.5px; background: var(--ink); content: ""; position: relative; transition: transform .2s ease; }
+  .nav-toggle span::before { position: absolute; top: -6px; }
+  .nav-toggle span::after { position: absolute; top: 6px; }
+  .nav-links {
+    position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; align-items: stretch; gap: 4px;
+    background: var(--white); padding: 8px var(--gutter) 24px; border-bottom: 1px solid var(--lavender); font-size: 16px;
+  }
+  .nav-links:not(.open) { display: none; }
+  .nav-links a:not(.btn) { padding-block: 12px; border-bottom: 1px solid var(--tint); }
+  .nav-links .btn { margin-top: 12px; }
+  .hero-grid { grid-template-columns: minmax(0, 1fr); padding: 12px var(--gutter) 40px; }
+  .hero-panel { border-radius: 24px; }
+  .stat-row { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 40px; }
+  .lender-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .lender-grid li { height: 92px; padding: 22px; }
+  .lender-grid li:last-child { grid-column: 2; }
+  .card-grid { grid-template-columns: minmax(0, 1fr); }
+  .founder-grid { grid-template-columns: minmax(0, 1fr); }
+  .founder-photo { aspect-ratio: 4 / 5; max-height: 520px; min-height: 0; }
+  .faq-grid { grid-template-columns: minmax(0, 1fr); }
+  .footer-top { align-items: flex-start; flex-direction: column; }
+}
+@media (max-width: 640px) {
+  .t-grid, .t-col.wide { grid-template-columns: minmax(0, 1fr); }
+  .lender-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lender-grid li:last-child { grid-column: auto; }
+  .faq-list summary { font-size: 17px; padding: 20px; }
+  .faq-list details p { padding: 0 20px 20px; }
+  .btn { padding: 18px 28px; }
+  .rated { white-space: normal; }
+}
+</style>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span></button>
+    <div class="nav-links" id="nav-links">
+      <a href="#solutions">Loans</a>
+      <a href="#lmi">LMI Waiver</a>
+      <a href="#calculator">Calculator</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#founder">Team</a>
+      <a href="#faq">FAQs</a>
+      <a class="btn" href="#book">Book a free call</a>
+    </div>
+    <a class="nav-logo" href="#hero" aria-label="Coin Capital — Medical Home Loans Australia, home">
+      <img src="assets/logo-coin-capital.png" width="988" height="518" alt="Coin Capital Home and Commercial Loans">
+    </a>
+  </nav>
+</header>
+
+<main id="view-home">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="pill eyebrow">Medical Professionals</span>
+        <h1>Healthier loan terms for medical professionals.</h1>
+        <p class="hero-lede">At Coin Capital, we specialise in home loans for medical professionals. Work in the medical field? Find out if you qualify for an LMI waiver and a range of other benefits.</p>
+      </div>
+
+      <div class="hero-panel" id="contact">
+        <img class="bg" src="assets/hero-surgeon.jpg" alt="" width="1200" height="1800">
+        <h2>Check Your Medico Borrowing Capacity</h2>
+        <div class="form-shell">
+          <!-- FORM:START — the live build swaps this block for the LeadConnector (GoHighLevel) embed, form id JPfzMGHciaMtKSbmUViP -->
+          <div class="form-card">
+            <form class="lead-form" id="lead-form" novalidate>
+              <div><label for="lf-first">First Name *</label><input id="lf-first" name="first_name" type="text" placeholder="First Name" autocomplete="given-name" required></div>
+              <div><label for="lf-last">Last Name *</label><input id="lf-last" name="last_name" type="text" placeholder="Last Name" autocomplete="family-name" required></div>
+              <div><label for="lf-phone">Phone *</label><input id="lf-phone" name="phone" type="tel" placeholder="Phone" autocomplete="tel" required></div>
+              <div><label for="lf-email">Email *</label>
+                <div class="email-wrap">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg>
+                  <input id="lf-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
+                </div>
+              </div>
+              <div><label for="lf-occupation">What is your Occupation?</label>
+                <div class="select-wrap">
+                  <select id="lf-occupation" name="occupation">
+                    <option value="" selected></option>
+                    <option>Doctor / Specialist</option>
+                    <option>Nurse / Midwife</option>
+                    <option>Dentist / Dental Professional</option>
+                    <option>Allied Health Professional (Physio, Chiro, etc.)</option>
+                    <option>Pharmacist / Optometrist</option>
+                    <option>Other Healthcare Professional</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit">Submit</button>
+              <p class="form-status" id="form-status" role="status" hidden></p>
+              <p class="fineprint">Takes 60 seconds • No impact on credit score • No obligation</p>
+            </form>
+          </div>
+          <!-- FORM:END -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS ===== -->
+  <section class="stats" aria-labelledby="stats-h">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="pill">Trusted by Medico Professionals</span>
+        <h2 class="h2" id="stats-h">Proven Results That Speak for Themselves</h2>
+      </div>
+      <dl class="stat-row">
+        <div class="stat"><dt>Lending Secured Australia-Wide</dt><dd>500M+</dd></div>
+        <div class="stat"><dt>Professionals &amp; Home Buyers Assisted</dt><dd>300+</dd></div>
+        <div class="stat"><dt>Years Ex-Banker Experience</dt><dd>10+</dd></div>
+        <div class="stat"><dt>Lenders &amp; Private Banking Channels Compared</dt><dd>30+</dd></div>
+      </dl>
+      <a class="btn" href="#contact">Enquire Now</a>
+    </div>
+  </section>
+
+  <!-- ===== PARTNERS ===== -->
+  <section class="partners" id="partners" aria-labelledby="partners-h">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="pill">Our Partners</span>
+        <h2 class="h2" id="partners-h" style="max-width:560px">Accredited to Compare 30+ Leading Lenders</h2>
+      </div>
+      <ul class="lender-grid">
+        <li><img src="assets/lender-anz.png" alt="ANZ" width="480" height="152"></li>
+        <li><img src="assets/lender-orde.png" alt="ORDE Financial" width="480" height="173"></li>
+        <li><img src="assets/lender-ing.png" alt="ING" width="480" height="122"></li>
+        <li><img src="assets/lender-bankwest.png" alt="Bankwest" width="480" height="127"></li>
+        <li><img src="assets/lender-nab.png" alt="NAB" width="480" height="192"></li>
+        <li><img src="assets/lender-pepper.png" alt="Pepper Money" width="480" height="217"></li>
+        <li><img src="assets/lender-stgeorge.png" alt="St.George" width="480" height="145"></li>
+        <li><img src="assets/lender-westpac.png" alt="Westpac" width="480" height="96"></li>
+        <li><img src="assets/lender-macquarie.png" alt="Macquarie" width="520" height="92"></li>
+        <li><img src="assets/lender-firstmac.png" alt="Firstmac" width="480" height="164"></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== LENDING SOLUTIONS ===== -->
+  <section class="solutions" id="solutions" aria-labelledby="solutions-h">
+    <div class="wrap stack">
+      <h2 class="h2 narrow" id="solutions-h">Our lending solutions for medical professionals.</h2>
+      <div class="card-grid">
+        <article class="card">
+          <span class="icon-tile"><img src="assets/icon-key.svg" alt=""></span>
+          <div class="card-text"><h3>Home Loans</h3>
+          <p>Make your dream home a reality by first finding your dream loan.</p></div>
+          <a class="more" href="#contact">Find out more</a>
+        </article>
+        <article class="card">
+          <span class="icon-tile"><img src="assets/icon-practice.svg" alt=""></span>
+          <div class="card-text"><h3>Investment Property Loans</h3>
+          <p>Get competitive lending rates for your investment property.</p></div>
+          <a class="more" href="#contact">Find out more</a>
+        </article>
+        <article class="card">
+          <span class="icon-tile"><img src="assets/icon-calculator.svg" alt=""></span>
+          <div class="card-text"><h3>Refinancing</h3>
+          <p>Time to review your loan? We’re here to help you refinance.</p></div>
+          <a class="more" href="#contact">Find out more</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LMI WAIVER ===== -->
+  <section class="lmi" id="lmi" aria-labelledby="lmi-h">
+    <div class="wrap two-col">
+      <div class="col-head">
+        <h2 class="h2" id="lmi-h">LMI waiver for medical professionals.</h2>
+        <figure class="saving">
+          <p class="saving-figure">$6,000 <span>to</span> $30,000</p>
+          <figcaption>LMI premium a medical professional could save on a $600,000 loan, at 1%-5% of the loan amount.</figcaption>
+        </figure>
+      </div>
+      <div class="prose">
+        <p>Did you know the banks offer home loans specifically for medical professionals? It’s the well-deserved reward for those who keep our communities thriving.</p>
+        <p>Medical professionals can access exclusive banking benefits, including waivers on Lenders Mortgage Insurance (LMI) for their home or investment property loans. LMI is a one-time premium, generally 1%-5% of the loan amount, that protects the bank should a borrower default. Meaning an LMI waiver on a $600,000 loan could save medical professionals between $6,000 and $30,000 in premiums.</p>
+        <p>If you're a medical professional with a standard home loan or investment property loan, now might be the perfect time to explore more rewarding borrowing options.</p>
+        <a class="btn arrow" href="#contact">Ask us about LMI waivers</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BORROWING CAPACITY CALCULATOR ===== -->
+  <section class="calculator" id="calculator" aria-labelledby="calculator-h">
+    <div class="wrap stack">
+      <div class="section-head">
+        <span class="pill">Borrowing Power</span>
+        <h2 class="h2" id="calculator-h">See what you could borrow.</h2>
+        <p class="section-lede">Three quick questions — about you, your income and your commitments — and you’ll get an estimated borrowing capacity with a serviceability breakdown you can adjust as you go.</p>
+      </div>
+      <div class="embed-frame" data-embed="calculator">
+        <iframe class="embed embed-calc" title="Borrowing capacity calculator"
+          src="https://lsbroker.com.au/borrowing.html?broker=9ecff722-2fa7-4bd2-bbba-3ab63f3109eb"
+          loading="lazy"></iframe>
+        <div class="embed-fallback" hidden>
+          <h3>Borrowing capacity calculator</h3>
+          <p>The calculator opens in its own window from here.</p>
+          <a class="btn arrow" href="https://lsbroker.com.au/borrowing.html?broker=9ecff722-2fa7-4bd2-bbba-3ab63f3109eb" target="_blank" rel="noopener">Open the calculator</a>
+        </div>
+      </div>
+      <p class="embed-note">Estimates only. Figures are a guide based on the details you enter, not an approval or a credit offer — your actual borrowing capacity depends on each lender’s credit criteria and a full assessment.</p>
+    </div>
+  </section>
+
+  <!-- ===== ELIGIBILITY ===== -->
+  <section class="eligibility band" id="eligibility" aria-labelledby="eligibility-h">
+    <div class="wrap two-col">
+      <div class="col-head">
+        <h2 class="h2" id="eligibility-h">Which medical professionals qualify for home loan benefits?</h2>
+        <p>The bank offers exceptional borrowing benefits to medical professionals in the following categories:</p>
+      </div>
+      <div class="prose">
+        <ul class="profession-grid">
+          <li>General Practitioners (GP)</li>
+          <li>Dentists</li>
+          <li>Cardiologists</li>
+          <li>Orthopaedic Surgeons</li>
+          <li>Dermatologists</li>
+          <li>Paediatricians</li>
+          <li>Psychiatrists</li>
+          <li>Neurosurgeons</li>
+          <li>Oncologists</li>
+          <li>Veterinarians</li>
+        </ul>
+        <div class="ask-row">
+          <p>Want to know if you’re in line for an LMI waiver as a medical professional?</p>
+          <a class="btn arrow" href="#contact">Find out if you’re eligible</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY A BROKER ===== -->
+  <section class="broker" id="broker" aria-labelledby="broker-h">
+    <div class="wrap two-col">
+      <div class="col-head">
+        <h2 class="h2" id="broker-h">Why do medical professionals use a mortgage broker?</h2>
+      </div>
+      <div class="prose">
+        <p>For busy medical professionals, your time is precious. And dealing directly with the banks not only consumes a lot of it, but also offers no guarantee you’re securing the most competitive home loan deal.</p>
+        <p>That's where the expertise of a mortgage broker comes in. A broker can help streamline the process, offering clarity on the diverse requirements and benefits different lenders provide, which can vary widely from one bank to another.</p>
+        <p>At Coin Capital, our expertise is built on more than a decade of experience with a broad network of over 30 Australian lenders. We're dedicated to securing the most desirable terms for your home loan, without sacrificing your valuable time. Whether it's helping you understand eligibility criteria or negotiating the most favourable interest rate, we handle the details so you can focus on your profession.</p>
+        <a class="btn arrow" href="#founder">Get to know Coin Capital</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MORTGAGE STRATEGIES ===== -->
+  <section class="strategies" id="strategies" aria-labelledby="strategies-h">
+    <div class="wrap two-col">
+      <div class="col-head">
+        <h2 class="h2" id="strategies-h">Helping medical professionals pay down their loans faster.</h2>
+      </div>
+      <div class="prose">
+        <p>A busy profession can get in the way of planning for the future. That’s why we offer tailored mortgage strategies to our clients, spending our time (not yours) ensuring your financial needs and long-term goals align. We offer:</p>
+        <ul class="gold-list">
+          <li><strong>Wealth-building strategies</strong>, which leverage both your robust income and your investment potential.</li>
+          <li><strong>Future planning</strong> to ensure the continued growth of your assets and passive income.</li>
+          <li><strong>Methods to pay down debt</strong>, thanks to lower interest rates, cost-saving product features (such as offset accounts and redraw facilities) and budgeting techniques.</li>
+        </ul>
+        <p>At Coin Capital, it’s about more than just finding competitive lending rates for doctors and other medical professionals like you. It’s about helping you find comfort in your financial future.</p>
+        <a class="btn arrow" href="#contact">Talk to us about our mortgage strategies</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROCESS ===== -->
+  <section class="process" id="process" aria-labelledby="process-h">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="pill">Our Process</span>
+        <h2 class="h2" id="process-h" style="max-width:640px">Securing Your Medico Home Loan is This Simple</h2>
+      </div>
+      <ol class="card-grid" style="list-style:none;margin:0;padding:0">
+        <li class="card step">
+          <svg class="step-arrow" viewBox="0 0 100 56" aria-hidden="true"><path d="M20 0h44l36 28-36 28H20A20 20 0 0 1 0 36V20A20 20 0 0 1 20 0z" fill="#0a066e"></path></svg>
+          <span class="icon-tile"><img src="assets/icon-calendar.svg" alt=""></span>
+          <div class="card-text"><h3>Step 1</h3><p class="step-sub">Book Your Strategy Session</p>
+          <p>Schedule a brief, confidential consultation at a time that suits your clinical roster. Ronil will quickly assess your goals, evaluate your unique income structure, and confirm your eligibility for exclusive LMI waivers, medico-only rates, and a tailored dr loan mortgage.</p></div>
+        </li>
+        <li class="card step">
+          <svg class="step-arrow" viewBox="0 0 100 56" aria-hidden="true"><path d="M20 0h44l36 28-36 28H20A20 20 0 0 1 0 36V20A20 20 0 0 1 20 0z" fill="#0a066e"></path></svg>
+          <span class="icon-tile"><img src="assets/icon-calculator.svg" alt=""></span>
+          <div class="card-text"><h3>Step 2</h3><p class="step-sub">The White-Glove Concierge</p>
+          <p>You focus on your patients. We'll handle the banks. Ronil leverages his ex-banking expertise to package your application perfectly. We liaise directly with your accountant to gather financials and negotiate with credit assessors to maximise your borrowing capacity.</p></div>
+        </li>
+        <li class="card step">
+          <span class="icon-tile"><img src="assets/icon-key.svg" alt=""></span>
+          <div class="card-text"><h3>Step 3</h3><p class="step-sub">Streamlined Pre-Approval</p>
+          <p>Walk away with a rock-solid pre-approval and absolute clarity on your financial position. Whether you are buying a premium home, upgrading your investment portfolio, or refinancing, you can move forward with absolute financial confidence.</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="testimonials" id="testimonials" aria-labelledby="testimonials-h">
+    <div class="wrap t-grid">
+      <div class="t-col wide">
+        <div class="t-intro">
+          <div class="g-rating">
+            <img src="assets/google-wordmark.svg" width="159" height="52" alt="Google">
+            <div>
+              <div class="stars" role="img" aria-label="5 stars"><img src="assets/star.png" alt=""><img src="assets/star.png" alt=""><img src="assets/star.png" alt=""><img src="assets/star.png" alt=""><img src="assets/star.png" alt=""></div>
+              <p>5 Star Rated <span aria-hidden="true">●</span> From 80+ Reviews</p>
+            </div>
+          </div>
+          <span class="pill">Reviews</span>
+          <h2 class="h2" id="testimonials-h">What Our Clients Say</h2>
+          <p class="lede">Hear from doctors, dentists, and other professionals who trusted Coin Capital to navigate their complex incomes and secure premium property finance.</p>
+          <a class="btn" href="#contact">Enquire Now</a>
+        </div>
+        <figure class="review">
+          <blockquote>Ronil has been an amazing finance broker. Not only did he go above and beyond, responding to me even at late hours, but he also ensured my finance approvals were completed quickly and smoothly. He always puts my best interests first and genuinely works to make my money work for me. I've been using Ronil's services for over 10 years, and I can confidently say that his professional advice and deep financial knowledge have been instrumental in building my financial stability. I'm truly grateful for his consistent support and highly recommend him to anyone looking for a trustworthy finance expert.</blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">KK</span><span><span class="name">Kai Kun</span><span class="src">Verified Google Review</span></span></figcaption>
+        </figure>
+        <figure class="review">
+          <blockquote>I recently worked with Ronil as my Finance strategist and mortgage advisor for a property purchase, and I couldn't be happier with the experience. He was incredibly knowledgeable and helpful throughout the entire loan structuring and application process, always providing clear explanations and guidance. His expertise and attention to detail truly exceeded my expectations, making what can often be a complex process feel seamless. I highly recommend Ronil to anyone in need of loan brokerage services. Thanks again for your outstanding work.</blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">DK</span><span><span class="name">Damaris Kyalo</span><span class="src">Verified Google Review</span></span></figcaption>
+        </figure>
+      </div>
+
+      <div class="t-col">
+        <figure class="review">
+          <blockquote>Ronil has been my broker for the last 5 years and he's still as awesome as he was then, if not better. He helped us get our first property and three properties later, I can say that it's always a pleasure to work with him. He knows his stuff, is very professional, and importantly he's a super nice and kind person, so it feels like you always have a friend in your corner as you make some of the biggest financial decisions of your life. I have recommended him to many of my friends, and they too have recommended him to others, which all speaks to Ronil and Coin Capital's competence and quality. You won't regret having him as your broker, for sure.</blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">SA</span><span><span class="name">Samuelson Appau</span><span class="src">Verified Google Review</span></span></figcaption>
+        </figure>
+        <figure class="review">
+          <blockquote>I had a truly great experience working with Ronil. He is an absolutely amazing financial broker - knowledgeable, dedicated, and incredibly supportive from day one. What seemed unlikely at first became possible thanks to his expert guidance and persistence. Ronil went above and beyond to help me secure the loan amount I was hoping for, and I couldn't be more grateful for his efforts. I highly recommend his services to anyone looking for a reliable and results-driven broker.</blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">PP</span><span><span class="name">Pravakar Pradhan</span><span class="src">Verified Google Review</span></span></figcaption>
+        </figure>
+      </div>
+
+      <div class="t-col">
+        <figure class="review">
+          <blockquote>Highly recommend Ronil as your broker! He was extremely helpful, easy to work with and very knowledgeable! He made the entire process as smooth and simple as possible. He helped us through the process with great communication from the get go and made sure we got the best options available!</blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">KH</span><span><span class="name">Karishma Hayer</span><span class="src">Verified Google Review</span></span></figcaption>
+        </figure>
+        <figure class="review">
+          <blockquote>We had the pleasure of receiving Ronil's exceptional services as a mortgage broker over a number of years. Ronil is highly efficient, uses clear communication, and thoroughness in all his dealings, which made our experience seamless and stress-free. We were genuinely pleased with the level of expertise he brings on and helps in tailoring the service to your personal financial situation. We highly recommend Ronil at Coin Capital to anyone seeking a reliable and knowledgeable mortgage broker, as his outstanding service surpassed all our expectations.</blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">AH</span><span><span class="name">Aniket Hivarekar</span><span class="src">Verified Google Review</span></span></figcaption>
+        </figure>
+        <figure class="review">
+          <blockquote>It was a pleasure working with Ronil. Very prompt in answering any question and goes out of his way to help ensure a smooth process. I would highly recommend him and will definitely use him for any future purchase.</blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">LV</span><span><span class="name">Lynette Vincent</span><span class="src">Verified Google Review</span></span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOUNDER ===== -->
+  <section class="founder" id="founder" aria-labelledby="founder-h">
+    <div class="wrap founder-grid">
+      <div class="founder-photo"><img src="assets/ronil-shah.jpg" alt="Ronil Shah, Director of Coin Capital" width="1000" height="1500"></div>
+      <div class="founder-copy">
+        <span class="pill">Your Medical Lending Specialist</span>
+        <h2 class="h2" id="founder-h">Meet <b>Ronil Shah</b></h2>
+        <div class="bio">
+          <p>As a former banker with over a decade of finance experience, I've seen firsthand how traditional lenders misunderstand the complex income structures of medical professionals. I transitioned to being a specialist <strong>doctor mortgage broker</strong> to sit on your side of the table.</p>
+          <p>Having settled over $500 million in <strong>home loans for medical professionals</strong> Australia-wide, my goal is simple: to leverage my insider banking knowledge and deep lender relationships to negotiate the exclusive LMI waivers and premium structures you deserve. I handle the heavy lifting and the bank negotiations of your <strong>doctor mortgage loan</strong> so you can focus on your practice and your patients.</p>
+        </div>
+        <ul class="gold-list">
+          <li><strong>Over a Decade of Ex-Banker Experience:</strong> I know exactly how bank credit assessors evaluate complex medical incomes, shift penalties, locum contracts, and trust structures.</li>
+          <li>With <strong>$500M+ in settled loans</strong>, Ronil is trusted by hundreds of professionals Australia-wide to seamlessly manage high-value property purchases, complex investment portfolios, and tailored <strong>dr loan mortgage</strong> solutions.</li>
+          <li><strong>Strategic Wealth Structuring:</strong> I go far beyond just securing a low rate. I structure your loans correctly from day one to ensure you have the flexibility to build a robust, long-term property portfolio.</li>
+        </ul>
+        <a class="btn" href="#contact">Enquire Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="faq" id="faq" aria-labelledby="faq-h">
+    <div class="wrap faq-grid">
+      <div class="faq-head">
+        <span class="pill">FAQ</span>
+        <h2 class="h2" id="faq-h">Frequently Asked Questions</h2>
+        <p>Everything you need to know about securing an exclusive medical professional home loan.</p>
+      </div>
+      <div class="faq-list">
+        <details name="faq" open>
+          <summary>Which medical professionals actually qualify for a Doctor mortgage loan with 95% LVR with no LMI?</summary>
+          <p>The LMI waiver is available to a wide range of AHPRA-registered professionals. This typically includes General Practitioners, Medical Specialists, Surgeons, Dentists, Optometrists, Pharmacists, and Veterinarians. Even if you are currently a medical resident or registrar, depending on your income trajectory, we have access to lenders who will extend these exact same premium waivers to you.</p>
+        </details>
+        <details name="faq">
+          <summary>A large part of my income comes from overtime, shift penalties, or locum work. Will banks accept this?</summary>
+          <p>If you go to a standard branch, their automated systems will often penalise or heavily "shade" irregular income. However, because we specialise in medical lending, we know exactly which lenders will accept 100% of your hospital overtime, Medicare billings, private practice dividends, and locum contracts to accurately reflect your true borrowing capacity.</p>
+        </details>
+        <details name="faq">
+          <summary>I have a significant HECS/HELP debt from my medical training. Will this ruin my borrowing capacity?</summary>
+          <p>It is incredibly common for our clients to have large student debts, but it shouldn't lock you out of the premium property market. Standard lenders use harsh calculators that heavily reduce what you can borrow based on HECS debt. As an ex-banker, Ronil actively selects lenders with the most generous servicing calculators specifically designed for medical professionals, minimising the impact of your student debt.</p>
+        </details>
+        <details name="faq">
+          <summary>How does a Doctor Mortgage Loan provide more borrowing power than a standard loan?</summary>
+          <p>A specialised Doctor Mortgage Loan is designed around the high-earning potential of medicos. While standard banks might "shade" your overtime or locum income, these specific loan structures allow for 100% of your total medical income to be considered, often alongside an LMI waiver up to 95% LVR.</p>
+        </details>
+        <details name="faq">
+          <summary>Are Medical Professional Home Loans only for General Practitioners?</summary>
+          <p>No. Our Medical Professional Home Loans are available to a broad range of AHPRA-registered specialists, including Surgeons, Dentists, Veterinarians, and Optometrists. We ensure your specific profession's income nuances are matched with the right lender policy.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+  <!-- ===== BOOK A CONSULTATION ===== -->
+  <section class="book band" id="book" aria-labelledby="book-h">
+    <div class="wrap stack">
+      <div class="section-head">
+        <span class="pill">Free Consultation</span>
+        <h2 class="h2" id="book-h">Book a time that suits your roster.</h2>
+        <p class="section-lede">A 30-minute video call with Ronil, at no cost and with no obligation. Pick a slot below and you’ll get a confirmation straight away.</p>
+      </div>
+      <div class="embed-frame light" data-embed="calendar">
+        <iframe class="embed embed-cal" title="Book a free consultation with Ronil Shah"
+          src="https://cal.com/ronil.shah/medical-home-loans?embed=true&amp;layout=month_view"
+          loading="lazy"></iframe>
+        <div class="embed-fallback" hidden>
+          <h3>Book a free consultation</h3>
+          <p>30 minutes by video, at a time that suits your roster.</p>
+          <a class="btn arrow" href="https://cal.com/ronil.shah/medical-home-loans" target="_blank" rel="noopener">Open the booking calendar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CLOSING CTA ===== -->
+  <section class="closing" aria-labelledby="closing-h">
+    <div class="wrap">
+      <div class="closing-panel">
+        <h2 class="h2" id="closing-h">Ready for a healthier home loan?</h2>
+        <div class="closing-actions">
+          <a class="btn light arrow" href="#book">Book a free consultation</a>
+          <a class="btn ghost arrow" href="#contact">Contact us today</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== PRIVACY POLICY (shown at #privacy-policy; the live build also emits it as /privacy-policy) ===== -->
+<main id="view-privacy" class="policy" hidden>
+  <div class="wrap">
+    <a class="back-link" href="#hero">← Back to home</a>
+    <article class="policy-body">
+      <h1>Privacy Policy</h1>
+      <p>At Coin Capital Pty Ltd, we are committed to protecting your privacy in accordance with the Privacy Act 1988 (Cth). This Privacy Policy describes our current policies and practices in relation to the handling and use of personal information.</p>
+
+      <h2>What information do we collect and how do we use it?</h2>
+      <p>We will ask you for personal information when we assist you with your finance. Personal information may include any sensitive information (including health information) and may include any information you tell us about any vulnerability you may have. We use the information you provide to advise about and assist with your credit needs. We only provide your information to the companies with whom you choose to deal (and their representatives).</p>
+      <p>We also use your information to send you requested product information and to enable us to manage your ongoing relationship with us e.g. invoicing, client surveys etc. We may do so by mail or electronically unless you tell us that you do not wish to receive electronic communications.</p>
+      <p>We may occasionally notify you about promotions, new services and special offers, events or articles we think will be of interest to you. We may send you regular updates by email or by post. If you would rather not receive this information, email or write to us.</p>
+      <p>We may also use your information internally to help us improve our services and help resolve any problems.</p>
+
+      <h2>What if you don’t provide some information to us?</h2>
+      <p>If you don’t provide us with full information, we can’t properly advise or assist you with your credit needs.</p>
+
+      <h2>How do we hold and protect your information?</h2>
+      <p>We strive to maintain the reliability, accuracy, completeness, and currency of the personal information we hold and to protect its privacy and security. We keep personal information only for as long as is reasonably necessary for the purpose for which it was collected or to comply with any applicable legal or ethical reporting or document retention requirements</p>
+      <p>We hold the information we collect from you in a secure cloud-based CRM.</p>
+
+      <h2>Will we disclose the information we collect to anyone?</h2>
+      <p>We do not sell, trade, or rent your personal information to others.</p>
+      <p>We may need to provide your information to our credit licensee e.g. for administration and supervision activities, contractors who supply services to us e.g. to handle mailings on our behalf, or to other companies in the event of a corporate sale, merger, re-organisation, dissolution or similar event. However, we will do our best to ensure that they protect your information in the same way that we do.</p>
+      <p>We may also provide your information to others if we are required to do so by law or under some unusual other circumstances which the Privacy Act permits.</p>
+
+      <h2>Disclosures to overseas recipients</h2>
+      <p>Some of the recipients to whom we disclose your personal information may be based overseas. It is not practicable to list every country in which such recipients are located but it is likely that such countries will include the Philippines, India, and Nepal.</p>
+      <p>From time to time, we will use your contact details to send you direct marketing communications including offers, updates and newsletters that are relevant to the services we provide. We may do so by mail or electronically unless you tell us that you do not wish to receive electronic communications.</p>
+      <p>You can unsubscribe ‘opt-out’ by notifying us and we will no longer send information to you. The information we obtain from you is used, subject to compliance with Australia’s privacy and credit reporting laws, only for the purposes listed in this Consent and is not disclosed to any other person except with your permission or as permitted, or required, by law.</p>
+
+      <h2>How can you check, update or change the information we are holding?</h2>
+      <p>Upon receipt of your written request and enough information to allow us to identify the information, we will disclose to you the personal information we hold about you. We will also correct, amend or delete any personal information that we agree is inaccurate.</p>
+      <p>If you wish to access or correct your personal information please write to Ronil Shah, Director, <a href="mailto:ronil@coincapital.com.au">ronil@coincapital.com.au</a>.</p>
+      <p>We do not charge for providing access to personal information.</p>
+
+      <h2>Your consent</h2>
+      <p>By asking us to assist with your credit needs, you consent to the collection and use of the information you have provided to us for the purposes described above. For more information on your privacy rights please visit <a href="https://www.oaic.gov.au" target="_blank" rel="noopener">www.oaic.gov.au</a></p>
+
+      <h2>Tell us what you think</h2>
+      <p>We welcome your questions and comments about privacy. If you have any concerns or complaints, please contact Ronil Shah, Director, <a href="mailto:ronil@coincapital.com.au">ronil@coincapital.com.au</a>.</p>
+
+      <h2>Complaints Internal Dispute Resolution</h2>
+      <p>If you do have a complaint, please let us know by email, because if we don’t know about it we can’t fix it. You may also contact us by email addressed to; The Complaints Officer at Ronil Shah, Director, <a href="mailto:ronil@coincapital.com.au">ronil@coincapital.com.au</a>. Please make sure you include as much information as you can.</p>
+      <p>You should explain the details of your complaint as clearly as you can. Ideally, this should be in writing, however you can lodge your complaint via telephone, in person or online. When we receive a complaint, we will attempt to resolve it promptly.</p>
+    </article>
+  </div>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/logo-coin-capital.png" width="988" height="518" alt="Coin Capital Home and Commercial Loans">
+        <p>Services are provided by Coin Capital Pty Ltd</p>
+      </div>
+      <div class="footer-legal">
+        <p>5/28 Carr St West Perth WA 6005</p>
+        <p>Coin Capital Pty Ltd (ABN 90674941229/ACN 674941229/Australian Credit Representative 501473) is a credit representative of Connective Credit Services Pty Ltd (ACN 143 651 496/Australian Credit Licence 389328)</p>
+        <p>*Subject to specific lender policies, minimum income thresholds, and credit criteria. Savings vary based on loan size.</p>
+        <p>**Approval times are subject to individual lender turnaround times and discretion.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Copyright © 2026 All rights reserved | <a href="#privacy-policy" data-privacy-link>Privacy Policy</a></p>
+      <p class="gaw">General Advice Warning: The information provided on this page is general in nature and does not constitute personal financial advice. All loan features, LMI waivers, interest rates, and approval timeframes are subject to individual lender credit criteria, AHPRA registration verification, minimum income thresholds, and policy requirements which may change without notice. Savings examples are illustrative only and will vary based on your specific loan size, LVR, and financial circumstances. Terms, conditions, fees, and charges apply.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var home = document.getElementById('view-home');
+  var privacy = document.getElementById('view-privacy');
+  var links = document.getElementById('nav-links');
+  var toggle = document.getElementById('nav-toggle');
+
+  // Mobile menu
+  toggle.addEventListener('click', function () {
+    var open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+  links.addEventListener('click', function (e) {
+    if (e.target.closest('a')) { links.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
+  });
+
+  // Home <-> Privacy Policy view (hash-routed so it works as a single file)
+  function route() {
+    var wantPrivacy = location.hash === '#privacy-policy' || window.__MHLA_VIEW === 'privacy';
+    if (location.hash && location.hash !== '#privacy-policy') { wantPrivacy = false; window.__MHLA_VIEW = null; }
+    home.hidden = wantPrivacy;
+    privacy.hidden = !wantPrivacy;
+    if (wantPrivacy) { window.scrollTo(0, 0); return; }
+    if (location.hash.length > 1) {
+      var target = document.getElementById(location.hash.slice(1));
+      if (target) target.scrollIntoView();
+    }
+  }
+  window.addEventListener('hashchange', route);
+  route();
+
+  // Embeds (calculator, booking calendar): if the host is blocked — as it is inside the
+  // Claude artifact sandbox — swap the frame for a card that opens it in a new tab.
+  document.querySelectorAll('.embed-frame').forEach(function (frame) {
+    var f = frame.querySelector('iframe');
+    var card = frame.querySelector('.embed-fallback');
+    if (!f || !card) return;
+    function fall() { if (frame.dataset.state === 'ok') return; f.hidden = true; card.hidden = false; }
+    f.addEventListener('load', function () {
+      if (frame.dataset.state === 'blocked') return;
+      frame.dataset.state = 'ok'; f.hidden = false; card.hidden = true;
+    });
+    setTimeout(function () { if (frame.dataset.state !== 'ok') fall(); }, 6000);
+    frame.__fall = function () { frame.dataset.state = 'blocked'; fall(); };
+  });
+  document.addEventListener('securitypolicyviolation', function (e) {
+    if (e.violatedDirective && e.violatedDirective.indexOf('frame') === -1) return;
+    var host = '';
+    try { host = new URL(e.blockedURI, location.href).hostname; } catch (err) { return; }
+    document.querySelectorAll('.embed-frame').forEach(function (frame) {
+      var f = frame.querySelector('iframe');
+      if (f && host && f.src.indexOf(host) !== -1 && frame.__fall) frame.__fall();
+    });
+  });
+
+  // Preview-only handler for the stand-in form (the live build uses the LeadConnector embed instead)
+  var form = document.getElementById('lead-form');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var status = document.getElementById('form-status');
+      var missing = Array.prototype.filter.call(form.querySelectorAll('[required]'), function (el) { return !el.value.trim() || !el.checkValidity(); });
+      status.hidden = false;
+      if (missing.length) {
+        status.textContent = 'Please complete ' + missing.map(function (el) { return el.placeholder; }).join(', ') + '.';
+        missing[0].focus();
+        return;
+      }
+      status.textContent = 'Preview only — nothing was sent. On the live build this panel is your LeadConnector form, so enquiries go straight to your CRM.';
+    });
+  }
+})();
+</script>
+
+</body></html>
