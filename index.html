@@ -418,6 +418,10 @@ section[id], div[id="contact"] { scroll-margin-top: calc(var(--header-h) + 12px)
                   </select>
                 </div>
               </div>
+              <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true">
+                <label for="lf-company">Company</label>
+                <input id="lf-company" name="company" type="text" tabindex="-1" autocomplete="off">
+              </div>
               <button type="submit">Submit</button>
               <p class="form-status" id="form-status" role="status" hidden></p>
               <p class="fineprint">Takes 60 seconds • No impact on credit score • No obligation</p>
@@ -918,12 +922,13 @@ section[id], div[id="contact"] { scroll-margin-top: calc(var(--header-h) + 12px)
     });
   });
 
-  // Hero form qualifies the visitor, then hands off to the full Connective application below.
+  // Hero enquiry form -> /api/lead -> Connective Mercury CRM.
   var form = document.getElementById('lead-form');
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var status = document.getElementById('form-status');
+      var button = form.querySelector('button[type="submit"]');
       var missing = Array.prototype.filter.call(form.querySelectorAll('[required]'), function (el) { return !el.value.trim() || !el.checkValidity(); });
       status.hidden = false;
       if (missing.length) {
@@ -931,10 +936,35 @@ section[id], div[id="contact"] { scroll-margin-top: calc(var(--header-h) + 12px)
         missing[0].focus();
         return;
       }
+
       var first = document.getElementById('lf-first').value.trim();
-      status.textContent = 'Thanks ' + first + ' — continue your application below to get started.';
-      var apply = document.getElementById('apply');
-      if (apply) apply.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      button.disabled = true;
+      status.textContent = 'Sending…';
+
+      fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          first_name: first,
+          last_name: document.getElementById('lf-last').value.trim(),
+          phone: document.getElementById('lf-phone').value.trim(),
+          email: document.getElementById('lf-email').value.trim(),
+          occupation: document.getElementById('lf-occupation').value,
+          company: document.getElementById('lf-company').value
+        })
+      }).then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (data) {
+          if (!r.ok) throw new Error(data.error || 'Your enquiry could not be sent.');
+          return data;
+        });
+      }).then(function () {
+        status.textContent = 'Thanks ' + first + ' — we’ve got your details and will be in touch shortly.';
+        form.reset();
+      }).catch(function (err) {
+        status.textContent = err.message + ' You can also reach us on ronil@coincapital.com.au.';
+      }).then(function () {
+        button.disabled = false;
+      });
     });
   }
 })();
