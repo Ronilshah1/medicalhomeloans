@@ -42,13 +42,18 @@ module.exports = async function handler(req, res) {
   const crm = await sendToMercury(lead);
   const mail = await sendNotification(lead, crm);
 
+  // Report each failure on its own. One path succeeding must not hide why the other
+  // broke, or a half-working setup looks healthy.
+  if (!crm.ok) console.error('Mercury write failed:', crm.error);
+  if (!mail.ok) console.error('Email notification failed:', mail.error);
+
   if (crm.ok || mail.ok) {
     console.log('Lead received:', { crm: crm.ok, email: mail.ok, uniqueId: crm.uniqueId });
     return res.status(200).json({ ok: true });
   }
 
   // Both paths failed — log the lead so it stays recoverable from the runtime logs.
-  console.error('LEAD NOT SENT — CRM and email both failed:', { crm: crm.error, mail: mail.error }, lead);
+  console.error('LEAD NOT SENT — CRM and email both failed:', lead);
   return res.status(502).json({ error: 'Your enquiry could not be sent. Please call us instead.' });
 };
 
