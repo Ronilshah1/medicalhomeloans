@@ -1,68 +1,100 @@
-// TEMPORARY schema discovery for the Mercury API. Read-only — it never writes.
-// Returns the SHAPE of records (key names and types) and never their values, so no
-// client PII leaves the CRM. Delete this file before deploying to production.
+// TEMPORARY Mercury diagnostics. Delete before deploying to production.
+//
+// Default: read-only. Returns the SHAPE of records (key names and types) only, never
+// their values, so no client PII leaves the CRM.
+//
+// ?test=1: invokes the real api/lead.js handler with obviously-fake data, then reads
+// the record back to confirm the fields persisted. This DOES write one contact.
+
+const leadHandler = require('./lead.js');
+
+const API_BASE = 'https://apis.connective.com.au/mercury/v1';
+
+const TEST_LEAD = {
+  first_name: 'ZZTest',
+  last_name: 'ClaudeProbe',
+  phone: '0400000000',
+  email: 'zztest.claudeprobe@example.com',
+  occupation: 'Doctor / Specialist'
+};
 
 module.exports = async function handler(req, res) {
   const key = process.env.MERCURY_API_KEY;
   const token = process.env.MERCURY_API_TOKEN;
   if (!key || !token) return res.status(500).json({ error: 'Credentials not configured' });
 
-  const bases = [
-    'https://apis.connective.com.au/mercury/v1',
-    'https://apis.connective.com.au/mercury-v1'
-  ];
-
-  const out = {};
-  for (const base of bases) {
-    out[base] = await probeBase(base, token, key);
+  if (req.query && req.query.test === '1') {
+    return res.status(200).json(await runCreateTest(token, key));
   }
-  return res.status(200).json(out);
-};
-
-async function probeBase(base, token, key) {
-  const result = {};
 
   const search = encodeURIComponent(JSON.stringify({ lastUpdated: '2020-01-01' }));
-  const list = await get(`${base}/${token}/contacts?search=true&searchParams=${search}`, key);
-  result['GET /contacts'] = { status: list.status, shape: shape(list.json), error: list.error };
+  const list = await call('GET', `${API_BASE}/${token}/contacts?search=true&searchParams=${search}`, key);
+  return res.status(200).json({
+    'GET /contacts': { status: list.status, shape: shape(list.json), error: list.error }
+  });
+};
 
-  const first = firstRecord(list.json);
-  const id = first && (first.id || first.contactId || first.contactID);
-  if (!id) return result;
+async function runCreateTest(token, key) {
+  const out = {};
 
-  result.sampleContactId = String(id);
+  // 1. Drive the real lead handler.
+  const mockRes = makeMockRes();
+  await leadHandler({ method: 'POST', body: TEST_LEAD }, mockRes);
+  out.leadHandler = { status: mockRes.code, body: mockRes.body };
 
-  // The key open question: is contactmethods a real child endpoint?
-  for (const child of ['contactmethods', 'contactMethods', 'contact-methods', 'addresses', 'employment']) {
-    const r = await get(`${base}/${token}/contacts/${id}/${child}`, key);
-    result[`GET /contacts/{id}/${child}`] = { status: r.status, shape: shape(r.json), error: r.error };
+  // 2. Find the record it created and show what actually persisted. Values here are
+  //    the synthetic test lead above, not real client data.
+  const search = encodeURIComponent(JSON.stringify({ email: TEST_LEAD.email }));
+  const found = await call('GET', `${API_BASE}/${token}/contacts?search=true&searchParams=${search}`, key);
+  out.searchByEmail = { status: found.status, error: found.error };
+
+  const rec = found.json && Array.isArray(found.json.results)
+    ? found.json.results.find(c => c && c.email === TEST_LEAD.email)
+    : null;
+
+  out.persisted = rec
+    ? {
+        uniqueId: rec.uniqueId,
+        firstName: rec.firstName,
+        lastName: rec.lastName,
+        email: rec.email,
+        mobile: rec.mobile,
+        occupation: rec.occupation,
+        notes: rec.notes,
+        contactType: rec.contactType,
+        personDataType: rec.personDataType
+      }
+    : 'not found by email search';
+
+  if (found.json && typeof found.json.totalCount === 'number') {
+    out.searchMatches = found.json.totalCount;
   }
 
-  const one = await get(`${base}/${token}/contacts/${id}`, key);
-  result['GET /contacts/{id}'] = { status: one.status, shape: shape(one.json), error: one.error };
-
-  return result;
+  return out;
 }
 
-async function get(url, key) {
+async function call(method, url, key, payload) {
   try {
-    const r = await fetch(url, { headers: { 'x-api-key': key, accept: 'application/json' } });
+    const r = await fetch(url, {
+      method,
+      headers: { 'x-api-key': key, 'content-type': 'application/json', accept: 'application/json' },
+      body: payload ? JSON.stringify(payload) : undefined
+    });
     const text = await r.text();
     let json = null;
     try { json = JSON.parse(text); } catch (_) { /* not json */ }
-    return { status: r.status, json, error: r.ok ? null : text.slice(0, 200) };
+    return { status: r.status, json, error: r.ok ? null : text.slice(0, 300) };
   } catch (err) {
     return { status: 0, json: null, error: err.message };
   }
 }
 
-function firstRecord(json) {
-  if (!json) return null;
-  if (Array.isArray(json)) return json[0];
-  for (const k of ['data', 'items', 'results', 'contacts']) {
-    if (Array.isArray(json[k])) return json[k][0];
-  }
-  return typeof json === 'object' ? json : null;
+function makeMockRes() {
+  const r = { code: null, body: null };
+  r.setHeader = () => {};
+  r.status = c => { r.code = c; return r; };
+  r.json = b => { r.body = b; return r; };
+  return r;
 }
 
 // Types and key names only — deliberately never values.

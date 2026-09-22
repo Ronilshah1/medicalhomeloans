@@ -3,8 +3,8 @@
 // The Mercury key is Partner-level (full CRUD on every contact and opportunity), so it
 // lives only in Vercel env vars and is never sent to the browser.
 //
-// UNVERIFIED: the payload shapes below come from the Mercury API docs, not from the
-// swagger — check /contacts and /contacts/{id}/contactmethods before trusting them.
+// Field names verified against a live GET /contacts response: email, mobile and
+// occupation are flat fields on the contact, and the identifier is `uniqueId`.
 
 const API_BASE = 'https://apis.connective.com.au/mercury/v1';
 
@@ -41,26 +41,19 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: 'Your enquiry could not be sent. Please call us instead.' });
   }
 
+  const payload = {
+    firstName: lead.firstName,
+    lastName: lead.lastName,
+    email: lead.email,
+    mobile: lead.phone,
+    notes: 'Website enquiry via medicalhomeloans.au'
+  };
+  if (lead.occupation) payload.occupation = lead.occupation;
+
   try {
-    const contact = await mercury('POST', `/${token}/contacts`, key, {
-      firstName: lead.firstName,
-      lastName: lead.lastName,
-      notes: lead.occupation
-        ? `Website enquiry — occupation: ${lead.occupation}`
-        : 'Website enquiry'
-    });
-
-    const contactId = contact && (contact.id || contact.contactId);
-    if (contactId) {
-      await Promise.allSettled([
-        mercury('POST', `/${token}/contacts/${contactId}/contactmethods`, key,
-          { type: 'Email', value: lead.email, isPrimary: true }),
-        mercury('POST', `/${token}/contacts/${contactId}/contactmethods`, key,
-          { type: 'Mobile', value: lead.phone, isPrimary: true })
-      ]);
-    }
-
-    console.log('Lead created in Mercury:', { contactId, email: lead.email });
+    const contact = await mercury('POST', `/${token}/contacts`, key, payload);
+    const uniqueId = contact && contact.uniqueId;
+    console.log('Lead created in Mercury:', { uniqueId, email: lead.email });
     return res.status(200).json({ ok: true });
   } catch (err) {
     // Log the lead so a Mercury outage leaves it recoverable from the runtime logs
