@@ -1,12 +1,17 @@
-// Hero enquiry form -> Connective Mercury CRM.
+// Hero enquiry form -> Connective Mercury CRM + email notification.
 //
 // The Mercury key is Partner-level (full CRUD on every contact and opportunity), so it
 // lives only in Vercel env vars and is never sent to the browser.
 //
-// Field names verified against a live GET /contacts response: email, mobile and
+// Mercury field names verified against a live GET /contacts response: email, mobile and
 // occupation are flat fields on the contact, and the identifier is `uniqueId`.
+//
+// The email is a second, independent delivery path rather than a nicety: if Mercury
+// rejects the write, the enquiry still reaches a human. The visitor is only shown an
+// error when BOTH paths fail.
 
-const API_BASE = 'https://apis.connective.com.au/mercury/v1';
+const MERCURY_BASE = 'https://apis.connective.com.au/mercury/v1';
+const RESEND_ENDPOINT = 'https://api.resend.com/emails';
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -34,12 +39,23 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ error: 'Please enter a valid email address.' });
   }
 
+  const crm = await sendToMercury(lead);
+  const mail = await sendNotification(lead, crm);
+
+  if (crm.ok || mail.ok) {
+    console.log('Lead received:', { crm: crm.ok, email: mail.ok, uniqueId: crm.uniqueId });
+    return res.status(200).json({ ok: true });
+  }
+
+  // Both paths failed — log the lead so it stays recoverable from the runtime logs.
+  console.error('LEAD NOT SENT — CRM and email both failed:', { crm: crm.error, mail: mail.error }, lead);
+  return res.status(502).json({ error: 'Your enquiry could not be sent. Please call us instead.' });
+};
+
+async function sendToMercury(lead) {
   const key = process.env.MERCURY_API_KEY;
   const token = process.env.MERCURY_API_TOKEN;
-  if (!key || !token) {
-    console.error('LEAD NOT SENT — Mercury credentials missing:', lead);
-    return res.status(500).json({ error: 'Your enquiry could not be sent. Please call us instead.' });
-  }
+  if (!key || !token) return { ok: false, error: 'Mercury credentials not configured' };
 
   const payload = {
     firstName: lead.firstName,
@@ -51,25 +67,72 @@ module.exports = async function handler(req, res) {
   if (lead.occupation) payload.occupation = lead.occupation;
 
   try {
-    const contact = await mercury('POST', `/${token}/contacts`, key, payload);
-    const uniqueId = contact && contact.uniqueId;
-    console.log('Lead created in Mercury:', { uniqueId, email: lead.email });
-    return res.status(200).json({ ok: true });
+    const r = await fetch(`${MERCURY_BASE}/${token}/contacts`, {
+      method: 'POST',
+      headers: { 'x-api-key': key, 'content-type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const text = await r.text();
+    if (!r.ok) return { ok: false, error: `${r.status} ${text.slice(0, 300)}` };
+    let uniqueId = null;
+    try { uniqueId = JSON.parse(text).uniqueId; } catch (_) { /* no body */ }
+    return { ok: true, uniqueId };
   } catch (err) {
-    // Log the lead so a Mercury outage leaves it recoverable from the runtime logs
-    // rather than silently dropped.
-    console.error('LEAD NOT SENT — Mercury API error:', err.message, lead);
-    return res.status(502).json({ error: 'Your enquiry could not be sent. Please call us instead.' });
+    return { ok: false, error: err.message };
   }
-};
+}
 
-async function mercury(method, path, key, payload) {
-  const r = await fetch(API_BASE + path, {
-    method,
-    headers: { 'x-api-key': key, 'content-type': 'application/json' },
-    body: JSON.stringify(payload)
+async function sendNotification(lead, crm) {
+  const key = process.env.RESEND_API_KEY;
+  if (!key) return { ok: false, error: 'RESEND_API_KEY not configured' };
+
+  const to = process.env.LEAD_NOTIFY_TO || 'ronil@coincapital.com.au';
+  const from = process.env.LEAD_NOTIFY_FROM || 'onboarding@resend.dev';
+
+  const received = new Date().toLocaleString('en-AU', {
+    timeZone: 'Australia/Perth', dateStyle: 'medium', timeStyle: 'short'
   });
-  const text = await r.text();
-  if (!r.ok) throw new Error(`${method} ${path} -> ${r.status} ${text.slice(0, 300)}`);
-  return text ? JSON.parse(text) : null;
+
+  const crmLine = crm.ok
+    ? `Saved to Mercury${crm.uniqueId ? ` (contact ${crm.uniqueId})` : ''}.`
+    : `NOT saved to Mercury — add this contact manually. Reason: ${crm.error}`;
+
+  const rows = [
+    ['Name', `${lead.firstName} ${lead.lastName}`],
+    ['Email', lead.email],
+    ['Phone', lead.phone],
+    ['Occupation', lead.occupation || '—'],
+    ['Received', `${received} (Perth)`]
+  ];
+
+  try {
+    const r = await fetch(RESEND_ENDPOINT, {
+      method: 'POST',
+      headers: { authorization: `Bearer ${key}`, 'content-type': 'application/json' },
+      body: JSON.stringify({
+        from,
+        to: [to],
+        reply_to: lead.email,
+        subject: `New enquiry — ${lead.firstName} ${lead.lastName}${lead.occupation ? ` (${lead.occupation})` : ''}`,
+        text: rows.map(([k, v]) => `${k}: ${v}`).join('\n') + `\n\n${crmLine}`,
+        html:
+          `<table style="font:14px system-ui,sans-serif;border-collapse:collapse">` +
+          rows.map(([k, v]) =>
+            `<tr><td style="padding:4px 12px 4px 0;color:#666">${escapeHtml(k)}</td>` +
+            `<td style="padding:4px 0"><strong>${escapeHtml(v)}</strong></td></tr>`
+          ).join('') +
+          `</table><p style="font:13px system-ui,sans-serif;color:${crm.ok ? '#666' : '#b00'}">${escapeHtml(crmLine)}</p>`
+      })
+    });
+    const text = await r.text();
+    if (!r.ok) return { ok: false, error: `${r.status} ${text.slice(0, 300)}` };
+    return { ok: true };
+  } catch (err) {
+    return { ok: false, error: err.message };
+  }
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c =>
+    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 }
