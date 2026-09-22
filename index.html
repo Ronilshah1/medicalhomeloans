@@ -301,6 +301,20 @@ section[id], div[id="contact"] { scroll-margin-top: calc(var(--header-h) + 12px)
   .closing-actions { width: 100%; flex-direction: column; align-items: stretch; }
 }
 
+/* ---- Connective "Apply Now" embed ----
+   The vendor script injects its own markup into #apply-now-content. `revert` undoes
+   this page's global resets inside the widget so their form keeps its own styling. */
+.apply { padding-top: var(--section-gap); }
+.embed-pad { padding: clamp(20px, 4vw, 44px); }
+#apply-now-main { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; letter-spacing: 0; line-height: 1.5; color: #111827; }
+#apply-now-main h1, #apply-now-main h2, #apply-now-main h3, #apply-now-main h4,
+#apply-now-main p, #apply-now-main figure, #apply-now-main ul, #apply-now-main ol { margin: revert; padding: revert; }
+#apply-now-main ul, #apply-now-main ol { list-style: revert; }
+#apply-now-main img { display: revert; }
+#apply-now-main a { color: revert; }
+#apply-now-main strong, #apply-now-main b { font-weight: revert; color: revert; }
+#apply-now-main iframe { display: block; width: 100%; border: 0; }
+
 /* ---- responsive ---- */
 @media (max-width: 1100px) {
   .step-arrow { display: none; }
@@ -742,6 +756,28 @@ section[id], div[id="contact"] { scroll-margin-top: calc(var(--header-h) + 12px)
     </div>
   </section>
 
+  <!-- ===== APPLY NOW (Connective embed) ===== -->
+  <section class="apply" id="apply" aria-labelledby="apply-h">
+    <div class="wrap stack">
+      <div class="section-head">
+        <span class="pill">Start Your Application</span>
+        <h2 class="h2" id="apply-h">Ready to apply? Start here.</h2>
+        <p class="section-lede">Begin your application securely through Connective, our aggregator. You can save your progress and pick it back up at any time.</p>
+      </div>
+      <div class="embed-frame light embed-pad">
+        <div id="apply-now-main">
+          <input id="apply-now-companyId" type="hidden" value="P205446" />
+          <input id="apply-now-caAgent" type="hidden" value="CA101155" />
+          <input id="apply-now-token" type="hidden" value="97837a4d-26a9-401c-b57f-b26be60b327e" />
+          <input id="apply-now-key" type="hidden" value="40501412-e508-4e31-b9eb-b41fd5a08a1a" />
+          <div id="apply-now-content"></div>
+          <script src="https://m5.connective.com.au/clientportal/applyNowEmbedder.js"></script>
+        </div>
+      </div>
+      <p class="embed-note">Applications are submitted to Coin Capital through Connective Credit Services Pty Ltd (ACL 389328). Submitting an application is not a credit approval — all applications remain subject to lender credit criteria and a full assessment.</p>
+    </div>
+  </section>
+
   <!-- ===== CLOSING CTA ===== -->
   <section class="closing" aria-labelledby="closing-h">
     <div class="wrap">
@@ -882,7 +918,7 @@ section[id], div[id="contact"] { scroll-margin-top: calc(var(--header-h) + 12px)
     });
   });
 
-  // Preview-only handler for the stand-in form (the live build uses the LeadConnector embed instead)
+  // Hero form qualifies the visitor, then hands off to the full Connective application below.
   var form = document.getElementById('lead-form');
   if (form) {
     form.addEventListener('submit', function (e) {
@@ -895,7 +931,10 @@ section[id], div[id="contact"] { scroll-margin-top: calc(var(--header-h) + 12px)
         missing[0].focus();
         return;
       }
-      status.textContent = 'Preview only — nothing was sent. On the live build this panel is your LeadConnector form, so enquiries go straight to your CRM.';
+      var first = document.getElementById('lf-first').value.trim();
+      status.textContent = 'Thanks ' + first + ' — continue your application below to get started.';
+      var apply = document.getElementById('apply');
+      if (apply) apply.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
 })();
