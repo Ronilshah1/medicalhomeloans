@@ -119,6 +119,11 @@ section[id], div[id="contact"] { scroll-margin-top: calc(var(--header-h) + 12px)
 .rated .stars img { width: 11px; height: 11px; }
 .hero h1 { font-size: clamp(28px, 2.6vw, 32px); font-weight: 500; line-height: 1.2; color: var(--ink); text-wrap: balance; margin-top: 8px; }
 .hero-lede { margin-block: 24px 16px; }
+.hero-trust { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 18px 32px; margin-top: 4px; }
+.hero-trust li { display: flex; flex-direction: column; gap: 3px; }
+.hero-trust .figure { font-size: 22px; font-weight: 500; line-height: 1.1; color: var(--ink); letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+.hero-trust .figure .star { color: var(--gold); }
+.hero-trust .label { font-size: 11px; line-height: 1.3; color: var(--muted); max-width: 22ch; }
 
 .hero-panel {
   position: relative; border-radius: 32px; overflow: hidden;
@@ -387,6 +392,11 @@ section[id], div[id="contact"] { scroll-margin-top: calc(var(--header-h) + 12px)
         <span class="pill eyebrow">Medical Professionals</span>
         <h1>Healthier loan terms for medical professionals.</h1>
         <p class="hero-lede">At Coin Capital, we specialise in home loans for medical professionals. Work in the medical field? Find out if you qualify for an LMI waiver and a range of other benefits.</p>
+        <ul class="hero-trust">
+          <li><span class="figure">$500M+</span><span class="label">Settled Australia-wide</span></li>
+          <li><span class="figure">30+</span><span class="label">Lenders compared</span></li>
+          <li><span class="figure">5.0 <span class="star" aria-hidden="true">★</span></span><span class="label">80+ Google reviews</span></li>
+        </ul>
       </div>
 
       <div class="hero-panel" id="contact">
