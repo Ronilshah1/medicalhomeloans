@@ -125,6 +125,16 @@ section[id], div[id="contact"] { scroll-margin-top: calc(var(--header-h) + 12px)
 .hero-trust .figure .star { color: var(--gold); }
 .hero-trust .label { font-size: 11px; line-height: 1.3; color: var(--muted); max-width: 22ch; }
 
+/* ---- awards ---- */
+.awards { padding-top: clamp(28px, 4vw, 44px); }
+.awards-row { display: flex; align-items: center; gap: clamp(18px, 3vw, 40px); flex-wrap: wrap; padding-bottom: clamp(28px, 4vw, 44px); border-bottom: 1px solid var(--rule); }
+.award-list { display: flex; gap: clamp(18px, 3vw, 48px); flex-wrap: wrap; }
+.award { display: flex; align-items: flex-start; gap: 12px; }
+.award-mark { flex: none; color: var(--gold); font-size: 17px; line-height: 1.25; }
+.award-text { display: flex; flex-direction: column; gap: 3px; }
+.award-name { font-size: 16px; font-weight: 400; line-height: 1.3; color: var(--ink); }
+.award-src { font-size: 12px; line-height: 1.3; color: var(--muted); }
+
 .hero-panel {
   position: relative; border-radius: 32px; overflow: hidden;
   padding: clamp(48px, 9vw, 120px) clamp(16px, 5.8vw, 74px);
@@ -440,6 +450,29 @@ section[id], div[id="contact"] { scroll-margin-top: calc(var(--header-h) + 12px)
           <!-- FORM:END -->
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ===== AWARDS ===== -->
+  <section class="awards" aria-label="Awards and recognition">
+    <div class="wrap awards-row">
+      <span class="pill">Recognition</span>
+      <ul class="award-list">
+        <li class="award">
+          <span class="award-mark" aria-hidden="true">★</span>
+          <span class="award-text">
+            <span class="award-name">All Round Broker of the Year — WA</span>
+            <span class="award-src">Winner, 2023 Connective Excellence Awards</span>
+          </span>
+        </li>
+        <li class="award">
+          <span class="award-mark" aria-hidden="true">★</span>
+          <span class="award-text">
+            <span class="award-name">Brokers of Excellence</span>
+            <span class="award-src">ANZ</span>
+          </span>
+        </li>
+      </ul>
     </div>
   </section>
 
