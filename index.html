@@ -131,9 +131,13 @@ section[id], div[id="contact"] { scroll-margin-top: calc(var(--header-h) + 12px)
 .award-list { display: flex; gap: clamp(18px, 3vw, 48px); flex-wrap: wrap; }
 .award { display: flex; align-items: flex-start; gap: 12px; }
 .award-mark { flex: none; color: var(--gold); font-size: 17px; line-height: 1.25; }
+.award-mark.member { color: var(--navy); }
 .award-text { display: flex; flex-direction: column; gap: 3px; }
 .award-name { font-size: 16px; font-weight: 400; line-height: 1.3; color: var(--ink); }
 .award-src { font-size: 12px; line-height: 1.3; color: var(--muted); }
+@media (max-width: 720px) {
+  .award-list { flex-direction: column; gap: 16px; }
+}
 
 .hero-panel {
   position: relative; border-radius: 32px; overflow: hidden;
@@ -456,7 +460,7 @@ section[id], div[id="contact"] { scroll-margin-top: calc(var(--header-h) + 12px)
   <!-- ===== AWARDS ===== -->
   <section class="awards" aria-label="Awards and recognition">
     <div class="wrap awards-row">
-      <span class="pill">Recognition</span>
+      <span class="pill">Awards &amp; Accreditation</span>
       <ul class="award-list">
         <li class="award">
           <span class="award-mark" aria-hidden="true">★</span>
@@ -470,6 +474,13 @@ section[id], div[id="contact"] { scroll-margin-top: calc(var(--header-h) + 12px)
           <span class="award-text">
             <span class="award-name">Brokers of Excellence</span>
             <span class="award-src">ANZ</span>
+          </span>
+        </li>
+        <li class="award">
+          <span class="award-mark member" aria-hidden="true">✓</span>
+          <span class="award-text">
+            <span class="award-name">MFAA Member</span>
+            <span class="award-src">Member no. 346113</span>
           </span>
         </li>
       </ul>
@@ -899,6 +910,7 @@ section[id], div[id="contact"] { scroll-margin-top: calc(var(--header-h) + 12px)
       <div class="footer-legal">
         <p>5/28 Carr St West Perth WA 6005</p>
         <p>Coin Capital Pty Ltd (ABN 90674941229/ACN 674941229/Australian Credit Representative 501473) is a credit representative of Connective Credit Services Pty Ltd (ACN 143 651 496/Australian Credit Licence 389328)</p>
+        <p>Member of the Mortgage &amp; Finance Association of Australia (MFAA) — Member no. 346113</p>
         <p>*Subject to specific lender policies, minimum income thresholds, and credit criteria. Savings vary based on loan size.</p>
         <p>**Approval times are subject to individual lender turnaround times and discretion.</p>
       </div>
