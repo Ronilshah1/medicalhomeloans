@@ -162,7 +162,6 @@ section[id], div[id="contact"] { scroll-margin-top: calc(var(--header-h) + 12px)
 .lead-form select { padding-block: 13px; padding-right: 40px; }
 .lead-form button { margin-top: 12px; width: 100%; border: 0; border-radius: 8px; padding: 15px; background: var(--navy); color: var(--white); font: 600 14px/1.4 inherit; font-family: inherit; cursor: pointer; transition: background-color .2s ease; }
 .lead-form button:hover { background: var(--navy-hover); }
-.lead-form .fineprint { margin-top: 18px; text-align: center; font-size: 12px; font-style: italic; color: #2c3345; }
 .lead-form .form-status { font-size: 13px; line-height: 1.4; padding: 10px 12px; border-radius: 8px; background: var(--tint); color: var(--footer-ink); }
 .ghl-embed { width: 100%; min-height: 724px; border: 0; border-radius: 3px; display: block; }
 
