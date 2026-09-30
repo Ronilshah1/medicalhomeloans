@@ -394,3 +394,12 @@ section[id], div[id="contact"] { scroll-margin-top: calc(var(--header-h) + 12px)
 .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; }
 .page-section { padding-top: var(--section-gap); }
 .hero-copy .crumbs { margin-bottom: 4px; }
+
+/* ---- thank-you page ---- */
+.confirm { padding-top: clamp(40px, 6vw, 72px); }
+.confirm-inner { max-width: 660px; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+.confirm .tick { width: 56px; height: 56px; border-radius: 50%; background: var(--navy); display: grid; place-items: center; flex: none; }
+.confirm .tick svg { width: 28px; height: 28px; }
+.confirm .lede { font-size: 18px; line-height: 1.45; max-width: 56ch; }
+.next { padding-top: var(--section-gap); }
+.step-num { font-size: 12px; font-weight: 500; color: var(--navy); }

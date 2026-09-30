@@ -78,8 +78,10 @@
           return data;
         });
       }).then(function () {
-        status.textContent = 'Thanks ' + first + ' — we’ve got your details and will be in touch shortly.';
-        form.reset();
+        // Handed over out-of-band so the lead's name stays out of the URL, history
+        // and referrer headers.
+        try { sessionStorage.setItem('mhla_lead_first', first); } catch (e) { /* blocked storage */ }
+        window.location.assign('/thank-you');
       }).catch(function (err) {
         status.textContent = err.message + ' You can also reach us on ronil@coincapital.com.au.';
       }).then(function () {
