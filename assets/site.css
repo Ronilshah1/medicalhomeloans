@@ -403,3 +403,8 @@ section[id], div[id="contact"] { scroll-margin-top: calc(var(--header-h) + 12px)
 .confirm .lede { font-size: 18px; line-height: 1.45; max-width: 56ch; }
 .next { padding-top: var(--section-gap); }
 .step-num { font-size: 12px; font-weight: 500; color: var(--navy); }
+
+/* ---- privacy policy lists ---- */
+/* The global reset strips list markers; restore them inside the policy body. */
+.policy-list { list-style: disc; padding-left: 22px; display: flex; flex-direction: column; gap: 10px; }
+.policy-list li { list-style: disc; line-height: 1.55; }
