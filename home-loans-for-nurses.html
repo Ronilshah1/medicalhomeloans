@@ -190,38 +190,28 @@ alt="" /></noscript>
         <img class="bg" src="/assets/hero-surgeon.jpg" alt="" width="1200" height="1800">
         <h2>Contact us for a free, obligation-free review</h2>
         <div class="form-shell">
-          <div class="form-card">
-            <form class="lead-form" id="lead-form" novalidate>
-              <div><label for="lf-first">First Name *</label><input id="lf-first" name="first_name" type="text" placeholder="First Name" autocomplete="given-name" required></div>
-              <div><label for="lf-last">Last Name *</label><input id="lf-last" name="last_name" type="text" placeholder="Last Name" autocomplete="family-name" required></div>
-              <div><label for="lf-phone">Phone *</label><input id="lf-phone" name="phone" type="tel" placeholder="Phone" autocomplete="tel" required></div>
-              <div><label for="lf-email">Email *</label>
-                <div class="email-wrap">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg>
-                  <input id="lf-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
-                </div>
-              </div>
-              <div><label for="lf-occupation">What is your Occupation?</label>
-                <div class="select-wrap">
-                  <select id="lf-occupation" name="occupation">
-                    <option value=""></option>
-                    <option>Doctor / Specialist</option>
-                    <option selected>Nurse / Midwife</option>
-                    <option>Dentist / Dental Professional</option>
-                    <option>Allied Health Professional (Physio, Chiro, etc.)</option>
-                    <option>Pharmacist / Optometrist</option>
-                    <option>Other Healthcare Professional</option>
-                  </select>
-                </div>
-              </div>
-              <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true">
-                <label for="lf-company">Company</label>
-                <input id="lf-company" name="company" type="text" tabindex="-1" autocomplete="off">
-              </div>
-              <button type="submit">Submit</button>
-              <p class="form-status" id="form-status" role="status" hidden></p>
-            </form>
-          </div>
+          <!-- LeadConnector (GoHighLevel) inline form. Submissions go to GHL, NOT /api/lead.
+               The form's On Submit action in GHL must redirect to /thank-you, otherwise the
+               Meta Lead event and the Google Ads conversion on that page never fire. -->
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/form/7I3f8wnkZmjK8acC4hnJ"
+            class="ghl-embed"
+            id="inline-7I3f8wnkZmjK8acC4hnJ"
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            data-activation-value=""
+            data-deactivation-type="neverDeactivate"
+            data-deactivation-value=""
+            data-form-name="Form 1"
+            data-height="662"
+            data-layout-iframe-id="inline-7I3f8wnkZmjK8acC4hnJ"
+            data-form-id="7I3f8wnkZmjK8acC4hnJ"
+            data-cookie-consent="true"
+            data-cookie-consent-provider="auto"
+            title="Enquiry form">
+          </iframe>
         </div>
       </div>
     </div>
@@ -366,27 +356,6 @@ alt="" /></noscript>
   data-tracking-id="tk_a39b2b5e9e1a40dfa797326a72789126">
 </script>
 
-<iframe
-    src="https://api.leadconnectorhq.com/widget/form/7I3f8wnkZmjK8acC4hnJ"
-    style="display:none;width:100%;height:100%;border:none;border-radius:8px"
-    id="polite-slide-in-right-7I3f8wnkZmjK8acC4hnJ"
-    data-layout="{'id':'POLITE_SLIDE_IN','minimizedTitle':'','isLeftAligned':false,'isRightAligned':true,'allowMinimize':false}"
-    data-trigger-type="alwaysShow"
-    data-trigger-value=""
-    data-activation-type="alwaysActivated"
-    data-activation-value=""
-    data-deactivation-type="neverDeactivate"
-    data-deactivation-value=""
-    data-form-name="Form 1"
-    data-height="662"
-    data-layout-iframe-id="polite-slide-in-right-7I3f8wnkZmjK8acC4hnJ"
-    data-form-id="7I3f8wnkZmjK8acC4hnJ"
-    data-cookie-consent="true"
-    data-cookie-consent-provider="auto"
-    title="Form 1"
-    data-modal-height="500"
->
-</iframe>
 <script src="https://link.msgsndr.com/js/form_embed.js"></script>
 
 </body>

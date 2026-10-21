@@ -42,51 +42,8 @@
     });
   });
 
-  // Hero enquiry form -> /api/lead -> Connective Mercury CRM.
-  var form = document.getElementById('lead-form');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var status = document.getElementById('form-status');
-      var button = form.querySelector('button[type="submit"]');
-      var missing = Array.prototype.filter.call(form.querySelectorAll('[required]'), function (el) { return !el.value.trim() || !el.checkValidity(); });
-      status.hidden = false;
-      if (missing.length) {
-        status.textContent = 'Please complete ' + missing.map(function (el) { return el.placeholder; }).join(', ') + '.';
-        missing[0].focus();
-        return;
-      }
-
-      var first = document.getElementById('lf-first').value.trim();
-      button.disabled = true;
-      status.textContent = 'Sending…';
-
-      fetch('/api/lead', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({
-          first_name: first,
-          last_name: document.getElementById('lf-last').value.trim(),
-          phone: document.getElementById('lf-phone').value.trim(),
-          email: document.getElementById('lf-email').value.trim(),
-          occupation: document.getElementById('lf-occupation').value,
-          company: document.getElementById('lf-company').value
-        })
-      }).then(function (r) {
-        return r.json().catch(function () { return {}; }).then(function (data) {
-          if (!r.ok) throw new Error(data.error || 'Your enquiry could not be sent.');
-          return data;
-        });
-      }).then(function () {
-        // Handed over out-of-band so the lead's name stays out of the URL, history
-        // and referrer headers.
-        try { sessionStorage.setItem('mhla_lead_first', first); } catch (e) { /* blocked storage */ }
-        window.location.assign('/thank-you');
-      }).catch(function (err) {
-        status.textContent = err.message + ' You can also reach us on ronil@coincapital.com.au.';
-      }).then(function () {
-        button.disabled = false;
-      });
-    });
-  }
+  // The enquiry form is now the LeadConnector (GoHighLevel) embed, which submits to GHL
+  // on its own. The handler that posted to /api/lead has been removed with it.
+  // api/lead.js is left in place: it still works, and is the endpoint a GHL webhook
+  // would post to if leads also need to reach Mercury.
 })();

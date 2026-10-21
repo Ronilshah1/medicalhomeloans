@@ -163,7 +163,9 @@ section[id], div[id="contact"] { scroll-margin-top: calc(var(--header-h) + 12px)
 .lead-form button { margin-top: 12px; width: 100%; border: 0; border-radius: 8px; padding: 15px; background: var(--navy); color: var(--white); font: 600 14px/1.4 inherit; font-family: inherit; cursor: pointer; transition: background-color .2s ease; }
 .lead-form button:hover { background: var(--navy-hover); }
 .lead-form .form-status { font-size: 13px; line-height: 1.4; padding: 10px 12px; border-radius: 8px; background: var(--tint); color: var(--footer-ink); }
-.ghl-embed { width: 100%; min-height: 724px; border: 0; border-radius: 3px; display: block; }
+/* min-height matches the embed's data-height so the panel does not jump while the
+   iframe loads; form_embed.js sets the real height once the form renders. */
+.ghl-embed { width: 100%; min-height: 662px; border: 0; border-radius: 18px; display: block; background: var(--white); }
 
 /* ---- stats ---- */
 .stats { padding-block: clamp(56px, 8vw, 120px) 0; }
